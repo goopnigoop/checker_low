@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender class="org.apache.log4j.ConsoleAppender" name="CONSOLE">
+        <param name="Target" value="System.out"/>
+        <param name="Threshold" value="DEBUG"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%-5p] %d{dd MMM yyyy HH:mm:ss} [%c] - %m%n"/>
+        </layout>
+    </appender>
+
+    <!-- Format to make logging more useful in Kabana -->
+    <appender class="org.apache.log4j.ConsoleAppender" name="CONSOLE_KABANA">
+        <param name="Target" value="System.out"/>
+        <param name="Threshold" value="INFO"/>
+        <layout class="net.logstash.log4j.JSONEventLayoutV1"/>
+    </appender>
+
+    <logger name="org.apache">
+        <level value="WARN"/>
+        <appender-ref ref="CONSOLE_KABANA"/>
+    </logger>
+
+    <logger name="org.springframework" additivity="false">
+        <level value="WARN"/>
+        <appender-ref ref="CONSOLE_KABANA"/>
+    </logger>
+
+    <logger name="org.springframework.web" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="CONSOLE_KABANA"/>
+    </logger>
+
+    <logger name="org.springframework.security" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="CONSOLE_KABANA"/>
+    </logger>
+
+    <logger name="org.springframework.jms" additivity="false">
+        <level value="WARN"/>
+        <appender-ref ref="CONSOLE_KABANA"/>
+    </logger>
+
+    <logger name="org.mybatis" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="CONSOLE_KABANA"/>
+    </logger>
+
+    <logger name="org.mybatis.spring" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="CONSOLE_KABANA"/>
+    </logger>
+
+    <logger name="com.amazonaws" additivity="false">
+        <level value="WARN"/>
+        <appender-ref ref="CONSOLE_KABANA"/>
+    </logger>
+
+    <logger name="com.amazon" additivity="false">
+        <level value="WARN"/>
+        <appender-ref ref="CONSOLE_KABANA"/>
+    </logger>
+
+    <logger name="com.syngenta.qts.mapper" additivity="false">
+        <level value="DEBUG"/>
+        <appender-ref ref="CONSOLE_KABANA"/>
+    </logger>
+
+    <root>
+        <level value="INFO"/>
+        <appender-ref ref="CONSOLE_KABANA"/>
+    </root>
+
+</log4j:configuration>
