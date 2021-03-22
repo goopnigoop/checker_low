@@ -1,6 +1,7 @@
 package com.checker.app.algs.arrays;
 
-import javafx.util.Pair;
+
+import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,6 +41,6 @@ public class SplitArrayServiceImpl implements SplitArrayService {
                     System.out.println(Arrays.toString(arr));
                     System.out.println();
                 });
-        return new Pair<>(ints, theDividedNumber);
+        return Pair.of(ints, theDividedNumber);
     }
 }

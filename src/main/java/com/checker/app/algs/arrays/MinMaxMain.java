@@ -2,6 +2,9 @@ package com.checker.app.algs.arrays;
 
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.joining;
 
 public class MinMaxMain {
     public static void main(String[] args) {
@@ -9,6 +12,11 @@ public class MinMaxMain {
         System.out.println(Arrays.toString(array));
         int[] maxMin = findMaxMin(array);
         System.out.println("Max=" + maxMin[0] + " min=" + maxMin[1]);
+        String collect = Stream.of(1, 3, 5, 8)
+                               .filter(s -> s % 2 == 0)
+                               .map(String::valueOf)
+                               .collect(joining("1", "fdf", "sf"));
+        System.out.println(collect);
     }
 
     private static int[] findMaxMin(int[] array) {
